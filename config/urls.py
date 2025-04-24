@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),
     path('api/products/', include('products.urls')),  # ✅ প্রোডাক্ট ইউআরএল যোগ করলাম
+    path('api/orders', include('orders.urls')),
 ]
 
 if settings.DEBUG:
