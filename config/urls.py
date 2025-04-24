@@ -15,11 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 # config/urls.py
-
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include  # ✅ এখানে path এবং include দুটোই import করো
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/users/', include('users.urls')),  # ✅ ইউজার অ্যাপের URL
+    path('api/users/', include('users.urls')),
+    path('api/products/', include('products.urls')),  # ✅ প্রোডাক্ট ইউআরএল যোগ করলাম
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
